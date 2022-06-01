@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org">
+<head th:replace="master/master :: head">
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	
+	<header th:replace="master/master :: header"></header>
+	<div class="container">
+			<a class="navbar-brand" href="#"><img alt="" th:src="@{/images/registro.jpg}" height="200" width="200"> </a>
+		<div>
+			<form th:action="@{/ppacientes/save}" method="post" th:object="${p}">
+
+				<div class="col-sm-12">
+
+					<label class="form-label">Nombre:</label> <input type="text" 
+						th:field="*{fullNamePaciente}" class="form-control"></input>
+
+				</div>
+				<div class="col-sm-12">
+
+					<label class="form-label">Fecha de nacimiento:</label> <input
+						type="date" min="1780-01-01" max="2022-04-01" th:field="*{birthDatePaciente}" class="form-control"></input>
+
+				</div>
+
+				<div class="col-sm-12">
+
+					<label class="form-label">Correo:</label> <input type="email"placeholder="usuario@ejemplo.com"
+						pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" th:field="*{emailPaciente}" class="form-control"></input>
+
+				</div>
+				<div class="col-sm-12">
+
+					<label class="form-label">Dirección:</label> <input type="text"
+						th:field="*{direccionPaciente}" class="form-control"></input>
+
+				</div>
+				<div class="col-sm-12">
+
+					<label class="form-label">Celular:</label> <input type="number" placeholder="Ingrese 9 dígitos"
+					min=100000000 max=999999999
+						th:field="*{celularPaciente}" class="form-control"></input>
+
+				</div>
+				<div class="col-sm-12">
+
+					<label class="form-label">DNI:</label> <input type="number"placeholder="Ingrese 8 dígitos"
+					min=10000000 max=99999999
+						th:field="*{dniPaciente}" class="form-control"></input>
+
+				</div>
+
+
+				<div class="col-sm-12">
+
+					<input type="submit" value="Registrar" class="btn btn-danger"></input>
+				</div>
+			</form>
+
+
+		</div>
+	</div>
+</body>
+</html>
