@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org">
+<head th:replace="master/master :: head">
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<header th:replace="master/master :: header"></header>
+	<div class="container">
+		<a class="navbar-brand" href="#"><img alt="" th:src="@{/images/buscar.jpg}" height="200" width="200"> </a>
+		<div>
+			<div class="table-responsive">
+				<table class="table table-white">
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Nombre</th>
+							<th>Fecha de nacimiento</th>
+							<th>Correo</th>
+							<th>Dirección</th>
+							<th>Celular</th>
+							<th>DNI</th>
+							<th>Operación</th>
+							<th>Modificar</th>
+						</tr>
+
+
+					</thead>
+					<tbody id="personas-list">
+						<tr th:each="pac:${listaPacientes}">
+							<td th:text="${pac.idPaciente}"></td>
+							<td th:text="${pac.fullNamePaciente}"></td>
+							<td
+								th:text="${#dates.format(pac.birthDatePaciente,'dd/MM/yyyy')}"></td>
+							<td th:text="${pac.emailPaciente}"></td>
+							<td th:text="${pac.direccionPaciente}"></td>
+							<td th:text="${pac.celularPaciente}"></td>
+							<td th:text="${pac.dniPaciente}"></td>
+							<td><a th:href="@{/ppacientes/delete?id=}+${pac.idPaciente}">
+									Eliminar </a></td>
+
+							<td><a th:href="@{'/ppacientes/goupdate/'+${pac.idPaciente}}">
+									Modificar </a></td>
+
+
+						</tr>
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+
+	</div>
+</body>
+</html>
