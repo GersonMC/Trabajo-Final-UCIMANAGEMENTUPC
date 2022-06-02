@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org">
+<head th:replace="master/master :: head">
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<header th:replace="master/master :: header"></header>
+	<div class="container">
+		<div>
+			<div class="table-responsive">
+				<table class="table table-white">
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Nombre Hospital</th>
+							<th>Direccion Hospital</th>
+							<th>Operacion</th>
+							<th>Operacion</th>
+						</tr>
+					</thead>
+					<tbody id="hospital-list">
+						<tr th:each="hos:${listaHospitales}">
+							<td th:text="${hos.idHospital}"></td>
+							<td th:text="${hos.nameHospital}"></td>
+							<td th:text="${hos.adressHospital}"></td>
+							<td><a th:href="@{/hhospitals/delete?id=}+${hos.idHospital}">
+									Eliminar</a></td>
+							<td><a th:href="@{'/hhospitals/goupdate/'+${hos.idHospital}}">
+									Actualizar</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
