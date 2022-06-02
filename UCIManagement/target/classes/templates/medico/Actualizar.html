@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="master/master :: head">
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<header th:replace="master/master :: header"></header>
+	<div class="container">
+		<div>
+			<form th:action="@{/mmedicos/update}" method="post" th:object="${me}">
+
+				<div class="col-sm-12">
+					<label class="form-label">Nombres:</label> <input type="text"
+						th:field="*{NombreMedico}" class="form-control"></input>
+				</div>
+				
+				<div class="col-sm-12">
+					<label class="form-label">Especialidad:</label> <input type="text"
+						th:field="*{EspecialidadMedico}" class="form-control"></input>
+				</div>
+
+				<div class="col-sm-12">
+					<label class="form-label">Fecha de Nacimiento:</label> <input
+						type="date" th:field="*{fncMedico}" class="form-control"></input>
+				</div>
+
+				<div class="col-sm-12">
+					<label class="form-label">Email:</label> <input type="text"
+						th:field="*{emailMedico}" class="form-control"></input>
+				</div>
+
+				<div class="col-sm-12">
+					<label class="form-label">Dirección:</label> <input type="text"
+						th:field="*{direccionMedico}" class="form-control"></input>
+				</div>
+
+				<div class="col-sm-12">
+					<label class="form-label">Número teléfonico:</label> <input type="text"
+						th:field="*{NumeroMedico}" class="form-control"></input>
+				</div>
+
+				<div class="col-sm-12">
+					<input type="submit" value="Actualizar" class="btn btn-dark"></input>
+				</div>
+			</form>
+		</div>
+
+	</div>
+</body>
+</html>
