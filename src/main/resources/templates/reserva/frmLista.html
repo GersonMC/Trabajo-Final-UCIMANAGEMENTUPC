@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org">
+<head th:replace="master/master :: head">
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<header th:replace="master/master :: header"></header>
+	<div class="container">
+
+		<hr style="background-color: #fdfdfd;" />
+		<div style="font-size: 150%">Lista de Reservas</div>
+		<hr style="background-color: #fa251b;" />
+		<img alt="" th:src="@{/images/listareserva.jpg}" height="200"
+			width="200">
+		<div>
+			<div class="table-responsive">
+				<table class="table table-danger">
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Paciente</th>
+							<th>Hospital</th>
+							<th>Estado</th>
+							<th>Operacion</th>
+							<th sec:authorize="hasAnyAuthority('ROLE_ADMINISTRADOR')">Operacion</th>
+						</tr>
+					</thead>
+					<tbody id="reserva-list">
+						<tr th:each="res:${listaReservas}">
+							<td th:text="${res.idReserva}"></td>
+							<td th:text="${res.paciente.fullNamePaciente}"></td>
+							<td th:text="${res.hospital.nameHospital}"></td>
+							<td th:text="${res.estado}"></td>
+							<td><a class="btn btn-danger"
+								th:href="@{/rreservas/delete?id=}+${res.idReserva}">
+									Cancelar</a></td>
+
+							<td><a class="btn btn-danger"
+								sec:authorize="hasAnyAuthority('ROLE_ADMINISTRADOR')"
+								th:href="@{'/rreservas/goupdate/'+${res.idReserva}}">
+									Modificar </a></td>
+
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+	</div>
+</body>
+</html>

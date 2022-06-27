@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org">
+    <head th:replace="master/master :: head">
+        <meta charset="UTF-8">
+        <title>Insert title here</title>
+    </head>
+    <body>
+        <header th:replace="master/master :: header"></header>
+        <div class="container">
+
+            <hr style="background-color: rgb(0, 0, 255);" />
+            <div style="font-size: 150%">Reporte de cantidad de reservas por hospital</div>
+            <hr style="background-color: rgb(0, 255, 64);" />
+            <img alt="" th:src="@{/images/busquedahospital.jpg}" height="200"
+                 width="200">
+            <div>
+                <div class="table-responsive">
+                    <table class="table table-danger">
+                        <thead>
+                            <tr>
+                                <th>Hospital</th>
+                                <th>Cantidad de reservas</th>
+                            </tr>
+                        </thead>
+                        <tbody id="hospital-list">
+                            <tr th:each="reportt:${listaReservasHosiptal}">
+                                <td th:text="${reportt[0]}"></td>
+                                <td th:text="${reportt[1]}"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

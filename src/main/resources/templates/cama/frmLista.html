@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org">
+<head th:replace="master/master :: head">
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<style>
+</style>
+<body>
+	<header th:replace="master/master :: header"></header>
+	<div class="container">
+		<img alt="" th:src="@{/images/listacama.jpg}" height="200" width="200">
+		<hr style="background-color: #fdfdfd;" />
+		<div style="font-size: 150%">Lista de Camas</div>
+		<hr style="background-color: #fa251b;" />
+
+		<div>
+			<div class="table-responsive">
+				<table class="table table-danger">
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Hospital</th>
+							<th>Código</th>
+							<th>Condición</th>
+							<th>Piso de Cama</th>
+							<th>Disponibilidad</th>
+							<th sec:authorize="hasAnyAuthority('ROLE_ADMINISTRADOR')">Operacion</th>
+							<th sec:authorize="hasAnyAuthority('ROLE_ADMINISTRADOR')">Operacion</th>
+						</tr>
+					</thead>
+					<tbody id="administrador-list">
+						<tr th:each="cam:${listaCamas}">
+							<td th:text="${cam.idCama}"></td>
+							<td th:text="${cam.hospital.nameHospital}"></td>
+							<td th:text="${cam.codigocama}"></td>
+							<td th:text="${cam.condicioncama}"></td>
+							<td th:text="${cam.pisoCama}"></td>
+							<td th:text="${cam.disponibilidadCama}"></td>
+							<td sec:authorize="hasAnyAuthority('ROLE_ADMINISTRADOR')"><a
+								class="btn btn-danger"
+								th:href="@{/ccamas/delete?id=}+${cam.idCama}"> Eliminar</a></td>
+							
+							<td sec:authorize="hasAnyAuthority('ROLE_ADMINISTRADOR')"><a
+								class="btn btn-danger"
+								th:href="@{'/ccamas/goupdate/'+${cam.idCama}}"> Actualizar</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+
+
+	</div>
+</body>
+</html>

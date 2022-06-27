@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org">
+<head th:replace="master/master :: head">
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<header th:replace="master/master :: header"></header>
+	<div class="container">
+
+		<hr style="background-color: rgb(0, 0, 255);" />
+		<div style="font-size: 150%">Registro de Hospitales</div>
+		<hr style="background-color: rgb(0, 255, 64);" />
+		<img alt="" th:src="@{/images/registrarhospital.jpg}" height="200"
+			width="200">
+		<div>
+			<form th:action="@{/hhospitals/save}" method="post" th:object="${hospital}">
+
+
+					<div class="col-sm-6 p-2 mb-2 bg-danger">
+						<label class="form-label">Nombre del hospital:</label>
+						<div class="col-sm-5 p-2 mb-2 bg-danger">
+							<input type="text" th:field="*{nameHospital}"
+								class="form-control" th:errorclass="'form-control alert-danger'" />
+							<small class="form-text text-body"
+                                   th:if="${#fields.hasErrors('nameHospital')}"
+                                   th:errors="*{nameHospital}"></small>
+						</div>
+					</div>
+					
+					<div class="form-group row">
+						<label for="adressHospital" class="col-sm-2 col-form-label">Dirección
+							del hospital(Detallado): </label><br>
+						<div class="col-sm-5 p-2 mb-2 bg-danger">
+							<input type="text" th:field="*{adressHospital}"
+								class="form-control" th:errorclass="'form-control alert-danger'" />
+							<small class="form-text text-body"
+                                   th:if="${#fields.hasErrors('adressHospital')}"
+                                   th:errors="*{adressHospital}"></small>
+						</div>
+					</div>
+
+
+					<div class="col-sm-5 p-2 mb-2 bg-danger">
+						<label class="form-label">Medico</label><select
+							name="selectMedico" class="form-control"
+							th:field="*{medico.idMedico}">
+							<option th:each="me:${listaMedicos}" th:value="${me.idMedico}"
+								th:text="${me.NombreMedico}"
+								th:selected="(${me.idMedico}==*{medico.idMedico})"></option>
+						</select>
+					</div>
+
+					<div class="col-sm-5">
+						<input type="submit" value="Registrar" class="btn btn-danger"></input>
+					</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

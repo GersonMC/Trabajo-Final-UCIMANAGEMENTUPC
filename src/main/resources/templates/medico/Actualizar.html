@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="master/master :: head">
+<meta charset="UTF-8">
+<title>UCI Management</title>
+</head>
+<body>
+
+	<header th:replace="master/master :: header"></header>
+
+	<div class="container">
+		<hr style="background-color: rgb(0, 0, 255);" />
+		<div style="font-size: 250%">Aquí puedes actualizar datos del
+			médico</div>
+		<hr style="background-color: rgb(0, 255, 64);" />
+		<img alt="" th:src="@{/images/medico_registrar.png}" height="150"
+			width="150">
+		<div>
+			<form th:action="@{/mmedicos/update}" method="post" th:object="${me}">
+
+				<div class="col-sm-12">
+					<label class="form-label">Id:</label> <input type="text"
+						readonly="" th:field="*{idMedico}" class="form-control"></input>
+				</div>
+
+
+				<div class="form-group row">
+					<label for="NombreMedico" class="col-sm-2 col-form-label">Nombres:
+					</label><br>
+					<div class="col-sm-5 p-2 mb-2 bg-danger">
+						<input type="text" th:field="*{NombreMedico}" class="form-control"
+							th:errorclass="'form-control alert-danger'" /> <small
+							class="form-text text-body"
+							th:if="${#fields.hasErrors('NombreMedico')}"
+							th:errors="*{NombreMedico}"></small>
+					</div>
+				</div>
+
+				<div class="col-sm-5 p-2 mb-2 bg-danger">
+					<label class="form-label">Especialidad</label><select
+						name="selectType" class="form-control"
+						th:field="*{EspecialidadMedico}">
+						<option value="Neumologia" selected>Neumologia</option>
+						<option value="Infectologo">Infectologo</option>
+						<option value="Inmunologo">Inmunologo</option>
+						<option value="Medicina Interna">Medicina Interna</option>
+						<option value="Medicina general">Medicina general</option>
+
+					</select>
+				</div>
+
+				<div class="form-group row">
+					<label for="NumeroColegiatura" class="col-sm-2 col-form-label">Número
+						de Colegiatura: </label>
+					<div class="col-sm-5 p-2 mb-2 bg-danger">
+						<input type="text" th:field="*{NumeroColegiatura}"
+							class="form-control" th:errorclass="'form-control alert-danger'" />
+						<small class="form-text text-body"
+							th:if="${#fields.hasErrors('NumeroColegiatura')}"
+							th:errors="*{NumeroColegiatura}"></small>
+					</div>
+				</div>
+
+				<div class="col-sm-5 p-2 mb-2 bg-danger">
+					<label class="form-label">Fecha de Nacimiento:</label><input
+						type="date" min="1920-01-01" max="2022-04-06"
+						th:field="*{fncMedico}" placeholder="Fecha" class="form-control"></input>
+				</div>
+
+				<div class="form-group row">
+					<label for="emailMedico" class="col-sm-2 col-form-label">Email:
+					</label><br>
+					<div class="col-sm-5 p-2 mb-2 bg-danger">
+						<input type="text" th:field="*{emailMedico}" class="form-control"
+							th:errorclass="'form-control alert-danger'" /> <small
+							class="form-text text-body"
+							th:if="${#fields.hasErrors('emailMedico')}"
+							th:errors="*{emailMedico}"></small>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="direccionMedico" class="col-sm-2 col-form-label">Dirección:
+					</label><br>
+					<div class="col-sm-5 p-2 mb-2 bg-danger">
+						<input type="text" th:field="*{direccionMedico}"
+							class="form-control" th:errorclass="'form-control alert-danger'" />
+						<small class="form-text text-body"
+							th:if="${#fields.hasErrors('direccionMedico')}"
+							th:errors="*{direccionMedico}"></small>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="NumeroMedico" class="col-sm-2 col-form-label">Número:
+					</label>
+					<div class="col-sm-5 p-2 mb-2 bg-danger">
+						<input type="text" th:field="*{NumeroMedico}" class="form-control"
+							th:errorclass="'form-control alert-danger'" /> <small
+							class="form-text text-body"
+							th:if="${#fields.hasErrors('NumeroMedico')}"
+							th:errors="*{NumeroMedico}"></small>
+					</div>
+				</div>
+				<div class="col-sm-5">
+					<input type="submit" value="Actualizar" class="btn btn-danger"></input>
+				</div>
+
+
+			</form>
+		</div>
+
+	</div>
+
+</body>
+
+</html>
