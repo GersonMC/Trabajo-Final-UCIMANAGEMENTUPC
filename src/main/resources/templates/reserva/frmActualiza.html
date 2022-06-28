@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org">
+<head th:replace="master/master :: head">
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<header th:replace="master/master :: header"></header>
+	<div class="container">
+		<div>
+			<form th:action="@{/rreservas/update}" method="post"
+				th:object="${re}">
+
+
+				<div class="col-sm-12">
+					<label class="form-label">Id:</label> <input type="text"
+						readonly="" th:field="*{idReserva}" class="form-control"></input>
+				</div>
+
+
+				<div class="col-sm-12">
+					<label class="form-label">Id Hospital:</label> <input type="text"
+						readonly="" th:field="*{hospital.idHospital}" class="form-control"></input>
+				</div>
+				
+				<div class="col-sm-12">
+					<label class="form-label">Id Paciente:</label> <input type="text"
+						readonly="" th:field="*{paciente.idPaciente}" class="form-control"></input>
+				</div>
+				
+		
+				<div class="col-sm-6 p-2 mb-2 bg-danger">
+					<label class="form-label">Estado:</label><select name="selectType"
+						class="form-control" th:field="*{estado}">
+						<option value="Aceptado" selected>Aceptado</option>
+						<option value="En proceso">En proceso</option>
+						<option value="Rechazado">Rechazado</option>
+					</select>
+				</div>
+
+
+				<div class="col-sm-12">
+					<input type="submit" value="Actualizar" class="btn btn-dark"></input>
+				</div>
+
+			</form>
+		</div>
+
+		<a class="navbar-brand" href="#"><img alt=""
+			th:src="@{/images/admin_Registrar.jpg}" height="300" width="500">
+		</a>
+
+	</div>
+
+
+</body>
+</html>

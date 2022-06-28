@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org">
+<head th:replace="master/master :: head">
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<header th:replace="master/master :: header"></header>
+	<div class="container">
+
+		<hr style="background-color: rgb(0, 0, 255);" />
+		<div style="font-size: 150%">Registro de Camas</div>
+		<hr style="background-color: rgb(0, 255, 64);" />
+		<img alt="" th:src="@{/images/cama.png}" height="200" width="200">
+
+		<div>
+			<form th:action="@{/ccamas/save}" method="post" th:object="${cama}">
+
+				<div class="col-sm-5 p-2 mb-2 bg-danger">
+					<label class="form-label">Hospital:</label><select
+						name="selectHospital" class="form-control"
+						th:field="*{hospital.idHospital}">
+						<option th:each="ho:${listaHospitales}"
+							th:value="${ho.idHospital}" th:text="${ho.nameHospital}"
+							th:selected="(${ho.idHospital}==*{hospital.idHospital})"></option>
+					</select>
+				</div>
+
+				<div class="form-group row">
+					<label for="codigodecama" class="col-sm-2 col-form-label">Código de cama:
+					</label><br>
+					<div class="col-sm-5 p-2 mb-2 bg-danger">
+						<input type="text" th:field="*{codigocama}" class="form-control"
+							th:errorclass="'form-control alert-danger'" /> <small
+							class="form-text text-body"
+							th:if="${#fields.hasErrors('codigocama')}"
+							th:errors="*{codigocama}"></small>
+					</div>
+				</div>
+
+				<div class="col-sm-5 p-2 mb-2 bg-danger">
+					<label class="form-label">Condición de Cama:</label><select
+						name="selectcondicion" class="form-control" th:field="*{condicioncama}">
+						<option value="Excelente" selected>Excelente</option>
+						<option value="Aceptable">Aceptable</option>
+						<option value="Deteriorado">Deteriorado</option>
+					</select>
+				</div>
+
+				<div class="col-sm-5 p-2 mb-2 bg-danger">
+					<label class="form-label">Piso:</label><select name="selectType"
+						class="form-control" th:field="*{pisoCama}">
+						<option value="Piso 1" selected>Piso 1</option>
+						<option value="Piso 2">Piso 2</option>
+						<option value="Piso 3">Piso 3</option>
+						<option value="Piso 4">Piso 4</option>
+						<option value="Piso 5">Piso 5</option>
+						<option value="Piso 6">Piso 6</option>
+						<option value="Piso 7">Piso 7</option>
+						<option value="Piso 8">Piso 8</option>
+						<option value="Piso 9">Piso 9</option>
+						<option value="Piso 10">Piso 10</option>
+					</select>
+				</div>
+
+				<div class="col-sm-5 p-2 mb-2 bg-danger">
+					<label class="form-label">Disponibilidad:</label><select
+						name="selectType" class="form-control"
+						th:field="*{disponibilidadCama}">
+						<option value="Disponible" selected>Disponible</option>
+						<option value="Ocupado">Ocupado</option>
+					</select>
+				</div>
+
+				<div class="col-sm-5">
+					<input type="submit" value="Registrar" class="btn btn-danger"></input>
+				</div>
+
+			</form>
+		</div>
+
+	</div>
+
+</body>
+</html>

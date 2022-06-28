@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org">
+<head th:replace="master/master :: head">
+<meta charset="UTF-8">
+<title>UCI Management</title>
+</head>
+<body>
+
+	<header th:replace="master/master :: header"></header>
+	<div class="container">
+
+		<hr style="background-color: rgb(0, 0, 255);" />
+		<div style="font-size: 150%">Actualizar datos del Paciente</div>
+		<hr style="background-color: rgb(0, 255, 64);" />
+		<img alt="" th:src="@{/images/paciente_Registrar.jpg}" height="200"
+			width="200">
+		<div>
+			<div class="alert alert-danger" th:if="${error}" th:text="${error}">
+			</div>
+
+			<form th:action="@{/ppacientes/update}" method="post"
+				th:object="${pe}">
+
+				<div class="col-sm-12">
+					<label class="form-label">Id:</label> <input type="text"
+						readonly="" th:field="*{idPaciente}" class="form-control"></input>
+				</div>
+
+
+				<div class="form-group row">
+					<label for="fullNamePaciente" class="col-sm-2 col-form-label">Nombres:
+					</label><br>
+					<div class="col-sm-5">
+						<input type="text" th:field="*{fullNamePaciente}"
+							class="form-control" th:errorclass="'form-control alert-danger'" />
+						<small class="form-text text-danger"
+							th:if="${#fields.hasErrors('fullNamePaciente')}"
+							th:errors="*{fullNamePaciente}"></small>
+					</div>
+				</div>
+
+				<div class="col-sm-5">
+					<label class="form-label">Fecha de Nacimiento:</label><input
+						type="date" min="1920-01-01" max="2022-04-06"
+						th:field="*{birthDatePaciente}" placeholder="Fecha"
+						class="form-control"></input>
+				</div>
+
+
+				<div class="form-group row">
+					<label for="emailPaciente" class="col-sm-2 col-form-label">Email:
+					</label><br>
+					<div class="col-sm-5">
+						<input type="text" th:field="*{emailPaciente}"
+							class="form-control" th:errorclass="'form-control alert-danger'"
+							maxlength="45" /> <small class="form-text text-danger"
+							th:if="${#fields.hasErrors('emailPaciente')}"
+							th:errors="*{emailPaciente}"></small>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="direccionPaciente" class="col-sm-2 col-form-label">Dirección:
+					</label><br>
+					<div class="col-sm-5">
+						<input type="text" th:field="*{direccionPaciente}"
+							class="form-control" th:errorclass="'form-control alert-danger'"
+							maxlength="48" /> <small class="form-text text-danger"
+							th:if="${#fields.hasErrors('direccionPaciente')}"
+							th:errors="*{direccionPaciente}"></small>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="celularPaciente" class="col-sm-2 col-form-label">Celular:
+					</label><br>
+					<div class="col-sm-5">
+						<input type="text" th:field="*{celularPaciente}"
+							class="form-control" th:errorclass="'form-control alert-danger'"
+							maxlength="9" /> <small class="form-text text-danger"
+							th:if="${#fields.hasErrors('celularPaciente')}"
+							th:errors="*{celularPaciente}"></small>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="dniPaciente" class="col-sm-2 col-form-label">DNI:
+					</label><br>
+					<div class="col-sm-5">
+						<input type="text" th:field="*{dniPaciente}" class="form-control"
+							maxlength="8" th:errorclass="'form-control alert-danger'" /> <small
+							class="form-text text-danger"
+							th:if="${#fields.hasErrors('dniPaciente')}"
+							th:errors="*{dniPaciente}"></small>
+					</div>
+				</div>
+
+
+
+				<div class="col-sm-5">
+					<label class="form-label">Rol:</label> <select name="selectType"
+						class="form-control" th:field="*{rolPaciente}">
+						<option value="ROLE_PACIENTE" selected>ROLE_PACIENTE</option>
+						<option value="ROLE_ADMINISTRADOR" selected>ROLE_ADMINISTRADOR</option>
+					</select>
+				</div>
+
+
+				<div class="form-group row">
+					<label for="usernamePaciente" class="col-sm-2 col-form-label">Nombre
+						de usuario: </label><br>
+					<div class="col-sm-5">
+						<input type="text" th:field="*{usernamePaciente}"
+							class="form-control" th:errorclass="'form-control alert-danger'" />
+						<small class="form-text text-danger"
+							th:if="${#fields.hasErrors('usernamePaciente')}"
+							th:errors="*{usernamePaciente}"></small>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="pswrdPaciente" class="col-sm-2 col-form-label">Contraseña:
+					</label><br>
+					<div class="col-sm-5">
+						<input type="text" th:field="*{pswrdPaciente}"
+							class="form-control" th:errorclass="'form-control alert-danger'" />
+						<small class="form-text text-danger"
+							th:if="${#fields.hasErrors('pswrdPaciente')}"
+							th:errors="*{pswrdPaciente}"></small>
+					</div>
+				</div>
+
+				<div class="col-sm-5">
+
+					<input type="submit" value="Actualizar" class="btn btn-danger"></input>
+				</div>
+			</form>
+
+
+		</div>
+
+
+
+	</div>
+</body>
+</html>

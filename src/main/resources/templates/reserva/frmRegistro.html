@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org">
+<head th:replace="master/master :: head">
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<header th:replace="master/master :: header"></header>
+
+	<div class="container">
+
+		<hr style="background-color: rgb(0, 0, 255);" />
+		<div style="font-size: 150%">Registro de Reserva</div>
+		<hr style="background-color: rgb(0, 255, 64);" />
+		<img alt="" th:src="@{/images/reservar.png}" height="200" width="200">
+		<div>
+			<form th:action="@{/rreservas/save}" method="post"
+				th:object="${reserva}">
+
+
+				<!--  	<div class="col-sm-5 p-2 mb-2 bg-danger">
+					<label class="form-label">Codigo de reserva:</label>
+					<br>
+					<div class="col-sm-5 p-2 mb-2 bg-danger">
+						<input type="text" th:field="*{codigoreserva}" class="form-control"
+							th:errorclass="'form-control alert-danger'" /> <small
+							class="form-text text-body"
+							th:if="${#fields.hasErrors('codigoreserva')}"
+							th:errors="*{codigoreserva}"></small>
+					</div>
+				</div>
+
+-->
+
+				<div class="col-sm-5 p-2 mb-2 bg-danger">
+					<label class="form-label">Paciente:</label><select
+						name="selectPaciente" class="form-control"
+						th:field="*{paciente.idPaciente}">
+						<option th:each="pa:${listaPacientes}" th:value="${pa.idPaciente}"
+							th:text="${pa.fullNamePaciente}"
+							th:selected="(${pa.idPaciente}==*{paciente.idPaciente})"></option>
+					</select>
+				</div>
+
+				<div class="col-sm-5 p-2 mb-2 bg-danger">
+					<label class="form-label">Hospital:</label><select
+						name="selectHospital" class="form-control"
+						th:field="*{hospital.idHospital}">
+						<option th:each="ho:${listaHospitales}"
+							th:value="${ho.idHospital}" th:text="${ho.nameHospital}"
+							th:selected="(${ho.idHospital}==*{hospital.idHospital})"></option>
+					</select>
+				</div>
+
+
+				<div class="col-sm-6 p-2 mb-2 bg-danger">
+					<label class="form-label">Estado:</label><select name="selectType"
+						class="form-control" th:field="*{estado}">
+						<option sec:authorize="hasAnyAuthority('ROLE_ADMINISTRADOR')"
+							value="Aceptado" selected>Aceptado</option>
+						<option value="En proceso">En proceso</option>
+						<option sec:authorize="hasAnyAuthority('ROLE_ADMINISTRADOR')"
+							value="Rechazado">Rechazado</option>
+					</select>
+				</div>
+
+				<div class="col-sm-5">
+					<input type="submit" value="Registrar" class="btn btn-danger"></input>
+				</div>
+
+			</form>
+		</div>
+
+
+	</div>
+
+
+</body>
+</html>
